@@ -1,0 +1,72 @@
+USE socialmedia;
+
+INSERT INTO `SocialMedia`.`account`
+(`username`, `email`, `password`)
+VALUES
+('johndoe', 'johndoe@gmail.com', 'johndoe123'),
+('janedoe', 'janedoe@gmail.com', 'janedoe123'),
+('bobsmith', 'bobsmith@gmail.com', 'bobsmith123'),
+('sarahlee', 'sarahlee@gmail.com', 'sarahlee123'),
+('mikewang', 'mikewang@gmail.com', 'mikewang123'),
+('lizchen', 'lizchen@gmail.com', 'lizchen123');
+
+INSERT INTO profile (name, surname, date_of_birth, bio)
+VALUES 
+  ('John', 'Doe', '2023-05-07 14:30:00', 'random'),
+  ('Jane', 'Doe', '2023-05-07 14:30:00', 'random'),
+  ('Bob', 'Smith', '2023-05-07 14:30:00', 'random'),
+  ('Alice', 'Jones', '2023-05-07 14:30:00', 'random'),
+  ('David', 'Lee', '2023-05-07 14:30:00', 'random'),
+  ('Sarah', 'Kim', '2023-05-07 14:30:00', 'random');
+
+
+INSERT INTO user_post (fk_profile_id, post_type, post_date, post_content)
+VALUES 
+  (1, 'Lorem ipsum dolor sit amet.', '2023-05-07 14:30:00', 'svega'),
+  (1, 'Csectetur adipiscing elit', '2023-05-07 14:31:00', 'dosta mi je'),
+  (3, 'Sed do eiusmod tempor incididunt.', '2023-05-07 14:32:00', 'random generic'),
+  (4, 'Ut labore et dolore magna aliqua.', '2023-05-07 14:33:00', 'najjaci sam'),
+  (2, 'Ut enim ad minim veniam.', '2023-05-07 14:34:00', 'idemooooo'),
+  (1, 'Duis aute irure dolor in reprehenderit.', '2023-05-07 14:35:00', 'laganica');
+
+
+INSERT INTO connection (fk_request_profile_id, fk_accept_profile_id)
+VALUES 
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (2, 3),
+    (3, 2),
+    (3, 3);
+
+
+INSERT INTO notification (fk_profile_id, notification_type, notification_date, notification_content)
+VALUES 
+  (2, 'warning', '2023-05-07 14:30:00', 'Lorem ipsum dolor sit amet.'),
+  (5, 'update information', '2023-05-07 14:31:00', 'Csectetur adipiscing elit'),
+  (3, 'emergency', '2023-05-07 14:32:00', 'Ut labore et dolore magna aliqua.'),
+  (4, 'standard', '2023-05-07 14:33:00', 'Sed do eiusmod tempor incididunt.'),
+  (2, 'message', '2023-05-07 14:34:00', 'Duis aute irure dolor in reprehenderit.'),
+  (1, 'warning', '2023-05-07 14:35:00', 'Ut enim ad minim veniam.');
+
+
+INSERT INTO socialmedia.activity_log
+(fk_profile_id, fk_notification_id, timestamp, activity_type, activity_text)
+VALUES 
+(2, 1, '2023-05-07 14:30:00', "critical 101", 'Sed do eiusmod tempor incididunt.'),
+(5, 2, '2023-05-07 14:31:00', "standard", 'Sed do eiusmod tempor incididunt.'),
+(3, 3, '2023-05-07 14:32:00', "critical 102", 'Sed do eiusmod tempor incididunt.'),
+(4, 4, '2023-05-07 14:33:00', "alksdjhj asdbhasdd basdadasdasd", 'Sed do eiusmod tempor incididunt.'),
+(2, 5, '2023-05-07 14:34:00', "alksdjhj asdbhasdd basdadasdasd", 'Sed do eiusmod tempor incididunt.'),
+(1, 6, '2023-05-07 14:35:00', "alksdjhj asdbhasdd basdadasdasd", 'Sed do eiusmod tempor incididunt.');
+
+
+INSERT INTO socialmedia.comment 
+(fk_post_id, fk_commenter_profile_id, comment_content, comment_date)
+VALUES
+(2, 1, 'Obozavam ovo, bas je super', '2023-05-29 14:30:00'),
+(3, 4, 'Ide ovo tebi hm hm', '2023-05-28 14:30:00'),
+(3, 3, 'Hop Hop', '2023-05-15 14:30:00'),
+(1, 5, 'Ide li to hena?', '2022-08-12 14:30:00'),
+(2, 6, 'Ide hihi', '2023-05-29 14:30:00'),
+(1, 4, 'Ringlispil, dan i noc', '2023-05-29 14:30:00');
